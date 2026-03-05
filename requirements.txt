@@ -1,0 +1,19 @@
+flask
+joblib
+matplotlib
+numpy
+pandas
+PyPDF2
+scikit-learn
+werkzeug
+python-dotenv
+tensorflow-cpu
+Pillow
+torch==2.0.0+cpu
+torchvision==0.15.0+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu
+psycopg2-binary
+bcrypt
+openpyxl
+xlrd
+pytest

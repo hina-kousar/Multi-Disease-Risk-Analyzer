@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Login · CureHelp+</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/curehelp.png') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}" />
+</head>
+<body class="admin-login-shell">
+    <a href="{{ url_for('admin.go_home') }}" class="admin-home-link" aria-label="Go back to app home">Home</a>
+    <section class="login-panel">
+        <div class="login-panel__form">
+            <form class="login-form" method="post" novalidate>
+                <label>
+                    <span>Username</span>
+                    <input type="text" name="username" required autocomplete="username" placeholder="Enter username" value="{{ form_values.username if form_values else '' }}" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password" required autocomplete="current-password" placeholder="Enter password" value="{{ form_values.password if form_values else '' }}" />
+                    {% if error %}<span class="login-error">{{ error }}</span>{% endif %}
+                </label>
+                <button type="submit" class="goo-button" id="admin-access-console">Access console</button>
+            </form>
+        </div>
+    </section>
+    <script>
+        (function () {
+            const form = document.querySelector('.login-form');
+            const button = document.getElementById('admin-access-console');
+            if (!form || !button) return;
+            form.addEventListener('submit', function () {
+                button.disabled = true;
+                button.textContent = 'Accessing...';
+            });
+        })();
+    </script>
+</body>
+</html>
